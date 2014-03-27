@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Remove database.yml and application.yml from git tracking
+/config/database.yml
+/config/application.yml
