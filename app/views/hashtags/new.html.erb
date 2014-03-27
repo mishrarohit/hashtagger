@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <%= form_for @hashtag, class: 'form-horizontal'  do |f| %>
+      <h4>Enter a hashtag (without the prefix #)</h4>
+      <div class="form-group">
+          <%= f.text_field :name %>
+      </div>
+      <%= f.submit "Scrape", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
