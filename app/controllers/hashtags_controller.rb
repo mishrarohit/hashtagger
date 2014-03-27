@@ -1,4 +1,5 @@
 class HashtagsController < ApplicationController
+  include ActionController::Live
 
   def new
     @hashtag = Hashtag.new
@@ -22,7 +23,9 @@ class HashtagsController < ApplicationController
       query_string = "%23#{@hashtag.name}"
       response = twitter_rest_client.search(query_string)
       
-      @hashtag.create_tweets_from_api_response(response)
+      response.each do |tweet_json|
+        @hashtag.create_tweet_from_api_response(tweet_json)
+      end
     end
 
     redirect_to hashtag_path(name: @hashtag.name)
@@ -31,7 +34,7 @@ class HashtagsController < ApplicationController
   def show
     @hashtag = Hashtag.find_by!(name: params[:name])
 
-    @tweets = @hashtag.tweets
+    @tweets = @hashtag.tweets.order('twitter_created_at DESC').limit(500)
   end
 
   private

@@ -1,9 +1,10 @@
 Hashtagger::Application.routes.draw do
   resources :hashtags, only: [:new, :create]
-
   root to: 'hashtags#new'
 
   get 'tweets/:name', to: 'hashtags#show', as: 'hashtag'
+
+  get '/streaming/tweets', to: 'streaming#tweets'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

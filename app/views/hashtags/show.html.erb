@@ -1,18 +1,11 @@
 <%= link_to "Back to Home", root_path, class: "btn btn-primary", id: 'hashtag-show-back-btn'  %>
 
-<h3 id='hashtag-name'><%= "##{@hashtag.name}"  %></h3>
+<h3 id='hashtag-name' data-hashtag-id="<%= @hashtag.id %>"><%= "##{@hashtag.name}"  %></h3>
 
-<% unless @tweets.blank? %>
-  <%= div_for(@tweets, class: 'row') do |tweet| %>
-    <div class="col-xs-12 col-sm-6 col-centered tweet-inner-container">    
-      <div class="tweet-header">
-        <%= content_tag :span, tweet.creator_name, class: 'tweet-creator-name' %>  
-        <%= content_tag :span, "@#{tweet.creator_username}", class: 'tweet-creator-username' %>  
-      </div>
-      <%= content_tag :span, tweet.text, class: 'tweet-text' %><br>      
-      <%= link_to "https://twitter.com/#{tweet.creator_username}/status/#{tweet.twitter_id}", target: '_blank' do %>
-        <%= local_time_ago(tweet.twitter_created_at) %>
-      <% end %>
-    </div>
+<div id="tweets-container">
+  <% unless @tweets.blank? %>
+    <% @tweets.each do |tweet| %>
+      <%= render partial: 'tweet', locals: { tweet: tweet} %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
