@@ -3,6 +3,8 @@ Hashtagger::Application.routes.draw do
 
   root to: 'hashtags#new'
 
+  get 'tweets/:name', to: 'hashtags#show', as: 'hashtag'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -58,3 +60,10 @@ Hashtagger::Application.routes.draw do
   #     resources :products
   #   end
 end
+#== Route Map
+# Generated on 27 Mar 2014 07:38
+#
+#    hashtags POST /hashtags(.:format)     hashtags#create
+# new_hashtag GET  /hashtags/new(.:format) hashtags#new
+#        root GET  /                       hashtags#new
+#     hashtag GET  /tweets/:name(.:format) hashtags#show

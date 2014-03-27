@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327013236) do
+ActiveRecord::Schema.define(version: 20140327040648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hashtag_tweets", force: true do |t|
+    t.integer  "hashtag_id"
+    t.integer  "tweet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hashtag_tweets", ["hashtag_id"], name: "index_hashtag_tweets_on_hashtag_id", using: :btree
+  add_index "hashtag_tweets", ["tweet_id"], name: "index_hashtag_tweets_on_tweet_id", using: :btree
 
   create_table "hashtags", force: true do |t|
     t.string   "name"
@@ -23,5 +33,18 @@ ActiveRecord::Schema.define(version: 20140327013236) do
   end
 
   add_index "hashtags", ["name"], name: "index_hashtags_on_name", unique: true, using: :btree
+
+  create_table "tweets", force: true do |t|
+    t.string   "text"
+    t.string   "creator_name"
+    t.string   "creator_username"
+    t.string   "twitter_id"
+    t.datetime "twitter_created_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tweets", ["twitter_created_at"], name: "index_tweets_on_twitter_created_at", using: :btree
+  add_index "tweets", ["twitter_id"], name: "index_tweets_on_twitter_id", using: :btree
 
 end

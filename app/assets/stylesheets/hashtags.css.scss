@@ -7,3 +7,33 @@
 body {
   background-color: #f0f0f0;
 }
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+#hashtag-show-back-btn {
+  margin: 15px;
+}
+
+#hashtag-name {
+  text-align: center;
+}
+
+.tweet {
+  margin-bottom: 15px;
+
+  .tweet-inner-container {
+    background-color: #fff;
+    padding: 15px;
+
+    .tweet-creator-name {
+      font-weight: bold;
+    }
+
+    .tweet-creator-username {
+      color: #777;
+    }
+  }
+}
