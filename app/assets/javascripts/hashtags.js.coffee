@@ -20,6 +20,7 @@ $ ->
 
     tweet_text = $('<span class="tweet-text"></span>')
     tweet_text.append t.text
+    tweet_text.append '<br>'
 
     tweet_inner_container.append tweet_text
 
