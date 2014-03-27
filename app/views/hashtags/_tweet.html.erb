@@ -4,7 +4,9 @@
       <%= content_tag :span, tweet.creator_name, class: 'tweet-creator-name' %>  
       <%= content_tag :span, "@#{tweet.creator_username}", class: 'tweet-creator-username' %>  
     </div>
-    <%= content_tag :span, tweet.text, class: 'tweet-text' %><br>      
+    <%= content_tag :p, class: 'tweet-text' do %>
+      <%= auto_link(tweet.text).html_safe %>
+    <% end %>      
     <%= link_to "https://twitter.com/#{tweet.creator_username}/status/#{tweet.twitter_id}", target: '_blank' do %>
       <%= local_time_ago(tweet.twitter_created_at) %>
     <% end %>

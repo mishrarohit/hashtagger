@@ -33,7 +33,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'twitter', '5.0.0.rc.1'
 gem 'figaro'
 gem 'local_time'
-# gem 'jquery-turbolinks'
+gem 'twitter-text'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

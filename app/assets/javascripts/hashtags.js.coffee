@@ -22,9 +22,8 @@ ready = ->
 
         tweet_inner_container.append tweet_header
 
-        tweet_text = $('<span class="tweet-text"></span>')
-        tweet_text.append t.text
-        tweet_text.append '<br>'
+        tweet_text = $('<p class="tweet-text"></p>')
+        tweet_text.append twttr.txt.autoLink(t.text)
 
         tweet_inner_container.append tweet_text
 
