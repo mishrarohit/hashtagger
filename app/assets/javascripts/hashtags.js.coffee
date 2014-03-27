@@ -2,10 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+ready = ->
+
+  unless window.hashtagger_eventsource == undefined
+    window.hashtagger_eventsource.close()
+
   unless $('#hashtag-name').data('hashtag-id') == undefined
-      source = new EventSource('/streaming/tweets?id=' + $('#hashtag-name').data('hashtag-id'))
-      source.addEventListener 'message', (e) ->
+      window.hashtagger_eventsource = new EventSource('/streaming/tweets?id=' + $('#hashtag-name').data('hashtag-id'))
+      window.hashtagger_eventsource.addEventListener 'message', (e) ->
         # console.log e.data
         t = $.parseJSON e.data
 
@@ -37,22 +41,5 @@ $ ->
 
         $('#tweets-container').prepend tweet
 
-
-
-     
-
-
-
-
-
-# <div class="tweet row">
-#   <div class="col-xs-12 col-sm-6 col-centered tweet-inner-container">    
-#     <div class="tweet-header">
-#       <span class="tweet-creator-name">MODIfied_Indian</span>  
-#       <span class="tweet-creator-username">@Prabhash_B</span>  
-#     </div>
-#     <span class="tweet-text">#WhyPMModi because #AK49 fires bullet which takes u-turn. @SanghParivarOrg @NaMOforPM @ZindegiROCKZ @choriketweet http://t.co/wtxYTGp3vI</span><br>      
-#     <a href="https://twitter.com/Prabhash_B/status/449085247057969152" target="_blank">
-#       <time data-local="time-ago" datetime="2014-03-27T07:27:21Z">43 minutes ago</time>
-# </a>  </div>
-# </div>
+$(document).ready(ready)
+$(document).on('page:load', ready)
