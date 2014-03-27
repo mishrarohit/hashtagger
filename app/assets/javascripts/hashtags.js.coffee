@@ -14,7 +14,7 @@ $ ->
     
     tweet_header = $('<div class="tweet-header"></div')
     tweet_header.append '<span class="tweet-creator-name">'+ t.creator_name + '</span>'
-    tweet_header.append '<span class="tweet-creator-username">' + t.creator_username + '</span>'
+    tweet_header.append '<span class="tweet-creator-username"> @' + t.creator_username + '</span>'
 
     tweet_inner_container.append tweet_header
 
