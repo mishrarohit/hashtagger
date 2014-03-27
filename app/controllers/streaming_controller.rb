@@ -19,7 +19,7 @@ class StreamingController < ApplicationController
       response.stream.write "data: #{tweet.to_json}\n\n" if object.is_a?(Twitter::Tweet)
     end
   rescue IOError
-    logger.info "Stream closed"
+    logger.info "=============== Stream closed ============="
   ensure
     response.stream.close
   end
