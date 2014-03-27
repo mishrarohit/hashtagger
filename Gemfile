@@ -42,6 +42,13 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
+group :development do
+  gem 'annotate'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
