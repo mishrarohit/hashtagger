@@ -3,6 +3,8 @@ class HashtagsController < ApplicationController
 
   def new
     @hashtag = Hashtag.new
+
+    @existing_hashtags = Hashtag.order('id DESC').limit(15)
   end
 
   def create

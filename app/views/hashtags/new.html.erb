@@ -9,3 +9,13 @@
     <% end %>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <h4>Recent Hashtags</h4>
+
+    <% @existing_hashtags.each do |existing_hashtag| %>
+      <%= link_to "##{existing_hashtag.name}", hashtag_path(name: existing_hashtag.name), class: 'existing-hashtag'  %>
+    <% end %>
+  </div>
+</div>
